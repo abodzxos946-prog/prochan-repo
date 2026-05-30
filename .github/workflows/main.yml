@@ -11,10 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build Repo
+      - name: Build Repo Package
         run: |
           mkdir -p repo
-          echo '{"name": "ProChan Repo", "author": "Bill", "packages": []}' > repo/index.min.json
+          echo '{"name": "ProChan Repo", "author": "Bill", "packages": [{"name": "ProManga", "pkg": "eu.kanade.tachiyomi.extension.ar.promanga", "apk": "promanga.apk", "versionCode": 1, "versionName": "1.0", "nsfw": 0, "lang": "ar"}]}' > repo/index.min.json
+          echo "fake apk" > repo/promanga.apk
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:

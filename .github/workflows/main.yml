@@ -13,12 +13,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build Repo Package
         run: |
-          mkdir -p repo
-          echo '{"name": "ProChan Repo", "author": "Bill", "packages": [{"name": "ProManga", "pkg": "eu.kanade.tachiyomi.extension.ar.promanga", "apk": "promanga.apk", "versionCode": 1, "versionName": "1.0", "nsfw": 0, "lang": "ar"}]}' > repo/index.min.json
-          echo "fake apk" > repo/promanga.apk
+          # هنا بنصنع الملف في الواجهة الرئيسية مباشرة بدون مجلد repo
+          echo '{"name": "ProChan Repo", "author": "Bill", "packages": [{"name": "ProManga", "pkg": "eu.kanade.tachiyomi.extension.ar.promanga", "apk": "promanga.apk", "versionCode": 1, "versionName": "1.0", "nsfw": 0, "lang": "ar"}]}' > index.min.json
+          echo "fake apk" > promanga.apk
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: repo
+          folder: . # النشر في الواجهة الرئيسية مباشرة
           branch: repo-pages
-          

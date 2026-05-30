@@ -2,16 +2,15 @@ name: Build Repo
 on:
   push:
     branches: [ "main", "master" ]
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
       - name: Build Repo
         run: |
           mkdir -p repo
